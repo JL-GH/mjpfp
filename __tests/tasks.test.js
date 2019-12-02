@@ -30,6 +30,7 @@ describe('/api/tasks routes', () => {
               expect(task).toEqual(
                 expect.arrayContaining([
                   expect.objectContaining(testTask),
+                  expect.objectContaining(testTask1),
                 ])
               );
             })

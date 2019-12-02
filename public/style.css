@@ -20,7 +20,7 @@
   display: flex;
   flex-direction: column;
   margin: 1rem 0.5rem 1rem 0.5rem;
-  background-image: linear-gradient(222deg, rgb(113, 212, 252), #a9e4ff);
+  background-image: linear-gradient(222deg, rgb(122, 162, 179), #c7ebfc);
   box-shadow: 0px 0px 35px -16px rgba(0,0,0,0.75);
 }
 
@@ -66,21 +66,33 @@
 
 .popUp {
   position: fixed;
-  width: 50%;
-  height: 50%;
+  width: 25%;
+  height: 25%;
   margin: auto;
   background-color: lightgrey;
 }
 
 .popUpInner {
   position: absolute;
-  left: 25%;
-  right: 25%;
-  top: 25%;
-  bottom: 25%;
+  width:100%;
+  height:100%;
   margin: auto;
-  background: white;
+  background-color:rgb(122, 162, 179);
+}
 
+div form {
+  display: flex;
+  flex-direction: column;
+}
+
+.popUpTitle {
+  text-align: center;
+  background-color: #646464;
+}
+
+.popUpTitle h2 {
+  margin: 0 0 0 0;
+  padding: 5%;
 }
 
 .monthBtn {
