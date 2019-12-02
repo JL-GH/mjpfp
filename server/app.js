@@ -48,25 +48,7 @@ app.post('/api/tasks', async (req, res, next) => {
 });
 
 app.put('/api/tasks/:id', async (req, res, next) => {
-  const attendance = req.body.isAttending
-  const modifyId = req.params.id
-
   try {
-    // const getIds = await Tasks.findAll({attributes: ['id']})
-    // const arrIds = getIds.map(obj => obj.id.toString())
-
-    // console.log(arrIds.includes(modifyId))
-    // console.log('param',modifyId)
-    // console.log('ids',arrIds.includes(modifyId))
-
-    // if (!arrIds.includes(modifyId)) {
-    //   res.status(400).send('Bad request. Please provide a valid id.')
-    // }
-    // else {
-      // res.status(200)
-      // .send(await Task.update(req.body))
-    // }
-
     await Task.update(req.body, {
       where: {id: req.params.id},
       returning: true

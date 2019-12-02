@@ -6,15 +6,15 @@ import axios from 'axios'
 const moment = require('moment')
 
 
-const deleteData = (task) => {
-  axios.delete(`http://localhost:3000/api/tasks/${task.id}`)
-    .then(() => {
-      store.dispatch({
-        type: DELETE,
-        delete: task.id
-      })
-    })
-}
+// const deleteData = (task) => {
+//   axios.delete(`http://localhost:3000/api/tasks/${task.id}`)
+//     .then(() => {
+//       store.dispatch({
+//         type: DELETE,
+//         delete: task.id
+//       })
+//     })
+// }
 
 class Tasks extends React.Component {
   constructor() {
@@ -59,21 +59,17 @@ class Tasks extends React.Component {
     })
   }
 
-  // editTask() {
-  //   const { task } = this.props
-  //   console.log(task)
-  // }
-
   render() {
     const { task } = this.props
-    // console.log('task props', this.props.task)
     return (
       <div>
         <div className='taskContainer'>
           <div className='taskName'>{task.taskName}</div>
           <div className='taskDue'>Task due @ {moment(`${task.taskTimeDue}`, 'HH:mm').format('h:mm a').toString()}</div>
-          <button type='button' onClick={() => this.togglePopUpEdit()}>Edit</button>
-          <button type='button' onClick={() => this.clickDelete()}>Done</button>
+          <div className='taskBtnContainer'>
+            <button className='taskBtns' type='button' onClick={() => this.togglePopUpEdit()}>Edit</button>
+            <button className='taskBtns' type='button' onClick={() => this.clickDelete()}>Done</button>
+          </div>
         </div>
       </div>
     )

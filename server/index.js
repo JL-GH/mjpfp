@@ -29,16 +29,6 @@ async function syncAndSeed() {
   console.log('done seeding');
 }
 
-// db.sync()
-//   .then(() => {
-//     app.listen(PORT, () => {
-//       console.log(`now listening on ${PORT}`)
-//     })
-//   })
-//   .catch(e => {
-//     console.log('connection error', e);
-// });
-
 syncAndSeed().then(() => {
   app.listen(PORT, () => {
     console.log(`listening on port ${PORT}`)

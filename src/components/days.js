@@ -32,6 +32,19 @@ class Days extends React.Component {
     })
   }
 
+  // toggleTaskList(elem) {
+  //   const div = document.getElementById(elem)
+  //   console.log(div)
+  //   // div.style.display = div.style.display === 'none' ? 'block' : 'none';
+  //   if (div.style.display === 'none'){
+  //     div.style.display = 'block';
+  //   }
+  //   else {
+  //     div.style.display = 'none';
+  //   }
+  // }
+
+
 
   arrDays() {
     const {curYear, daysInMonth} = this.state
@@ -45,10 +58,6 @@ class Days extends React.Component {
     }
     return arr
   }
-
-  // curDayLong(YYYYMM, DD) {
-  //   moment.weekdays(moment(`${YYYYMM}-${DD}`).day())
-  // }
 
   render() {
     const {curMonth, curYear, tasks} = this.state
@@ -70,7 +79,8 @@ class Days extends React.Component {
                   <h3 className='dateContainer'><span className='date'>{curMonthShort} {date}</span>
                   <span>
                   <button type='button' className='addTask' name={`${yearMonth}-${date}`} onClick={(ev) => this.togglePopUp(ev)}>+</button>
-                  </span></h3>
+                  </span>
+                  </h3>
                   <br/>
                   <span className='day'>
                     {
@@ -90,9 +100,8 @@ class Days extends React.Component {
                       : `Day is free`
                     }
                   </h5>
-                  {/* <h3 className='numTasksInc'></h3> */}
                 </div>
-                <div className='tasksToDoList'>
+                <div id='tasksToDoList' className='tasksToDoList' display='none'>
                   {
                     tasks.filter(task => {
                        return task.taskDateDue === moment(`${yearMonth}-${date}`).format('YYYY-MM-DD').toString()
@@ -101,13 +110,17 @@ class Days extends React.Component {
                     })
                   }
                 </div>
-                {
+                {/* {
                   tasks.filter(task => {
                     return task.taskDateDue === moment(`${yearMonth}-${date}`).format('YYYY-MM-DD').toString()
                   }).length > 0
-                  ? <button type='button' className='expand'><span>Show Task(s)</span></button>
+                  ? <button type='button'
+                    className='expand'
+                    onClick={(document.getElementById('')) => this.toggleTaskList()}>
+                      <span>Show Task(s)</span>
+                    </button>
                   : null
-                }
+                } */}
               </div>
             </div>
             )

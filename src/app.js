@@ -13,8 +13,6 @@ class App extends React.Component {
   render() {
     return (
       <div className='calendar'>
-        {/* <MonthHeader />
-        <DaysContainer /> */}
         <HashRouter>
           <Route path='/:id?' component={ MonthHeader } />
           <Route path='/:id?' component={ DaysContainer } />

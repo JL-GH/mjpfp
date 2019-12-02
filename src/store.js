@@ -14,6 +14,7 @@ const ON_TIME_CHANGE = 'ON_TIME_CHANGE'
 const SET_TASKS = 'SET_TASKS'
 const DELETE = 'DELETE'
 const SET_FORM_EDIT = 'SET_FORM_EDIT'
+const TOGGLE_TASK_LIST = 'TOGGLE_TASK_LIST'
 
 
 const initialState = {
@@ -29,7 +30,8 @@ const initialState = {
   formDate: '',
   taskTitle: '',
   taskTimeDue: '',
-  selectedTaskId: ''
+  selectedTaskId: '',
+  taskListDisplay: false
 }
 
 // eslint-disable-next-line complexity
@@ -97,11 +99,6 @@ const reducer = (state = initialState, action) => {
       const updatedList = state.tasks.filter(task => task.id !== action.delete)
       return Object.assign({}, state, {tasks: updatedList})
     }
-    // case ADD_TASK: {
-    //   return Object.assign({}, state, {
-    //     taskTimeDue: action.onChangeTime
-    //   })
-    // }
     default:
       return state
   }

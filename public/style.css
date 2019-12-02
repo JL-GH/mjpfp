@@ -1,23 +1,27 @@
 .calendar
 {
-    /* background-color: rgb(182, 177, 178); */
-    background-image: linear-gradient(-222deg, #646464, #454545);
+    background-image: linear-gradient(222deg, #646464, #454545);
     padding: 20px;
     border: solid 1px #ddd;
-    /* box-sizing:border-box; */
-
 }
 
 .daysContainer {
-  /* border: 1px solid black; */
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  /* height: 100vh;
-  width: 100vw; */
   justify-items: flex-start;
   justify-content: space-evenly;
-  /* flex: 1; */
+}
+
+.innerDayContainer {
+  border-radius: 5%;
+  width: 250px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0.5rem 1rem 0.5rem;
+  background-image: linear-gradient(222deg, rgb(113, 212, 252), #a9e4ff);
+  box-shadow: 0px 0px 35px -16px rgba(0,0,0,0.75);
 }
 
 .dateContainer {
@@ -29,34 +33,30 @@
   border-bottom: 2px solid rgba(0, 0, 0, 0.08);
   margin: .35rem .35rem 0rem .35rem;
 }
+
+
 .totalTasks {
   border-bottom: 2px solid rgba(0, 0, 0, 0.08);
   margin: .0rem .35rem 0rem .35rem;
 }
 
 .tasksToDoList {
-  /* border-bottom: 2px solid rgba(0, 0, 0, 0.08); */
+  display: block;
+  overflow: auto;
   margin: .35rem .35rem 0rem .35rem;
 }
 
-.innerDayContainer {
-  /* border: .5px solid black; */
-  border-radius: 5%;
-  width: 250px;
-  height: 250px;
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
-  margin: 1rem 0.5rem 1rem 0.5rem;
-  /* box-shadow: 0px 2px 3px rgba(0,0,0,.13) ,1px 2px 2px rgba(0,0,0,.1) , -1px -2px 2px rgba(0,0,0,.05) ; */
-  background-image: linear-gradient(222deg, rgb(113, 212, 252), #a9e4ff);
-  box-shadow: 0px 0px 35px -16px rgba(0,0,0,0.75);
+.taskBtns {
+  width: 45px;
+  height: 20px;
+  border-radius:10%;
+  background-color: #fff;
+  cursor: pointer;
 }
 
 .monthContainer {
   display: flex;
   justify-content: center;
-  /* flex-direction: column; */
 }
 
 .monthBtnContainer {
@@ -88,22 +88,11 @@
 
 
 .monthBtn {
-  /* background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px; */
-
   width: 50px;
   height: 30px;
   border-radius:10%;
   background-color: #fff;
   cursor: pointer;
-  /* margin:0 0 0 65px; */
-  color:#c2c2c2;
 }
 
 .addTask {
@@ -113,6 +102,4 @@
   background-color: #fff;
   cursor: pointer;
   margin:0 0 0 155px;
-  color:#c2c2c2;
-  /* padding: 11px 13px; */
 }

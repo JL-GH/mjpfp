@@ -50021,7 +50021,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -56789,7 +56789,18 @@ function (_React$Component) {
         setFormDate: moment(ev.target.name).format('YYYY-MM-DD').toString(),
         toggle: !this.state.showPopUp
       });
-    }
+    } // toggleTaskList(elem) {
+    //   const div = document.getElementById(elem)
+    //   console.log(div)
+    //   // div.style.display = div.style.display === 'none' ? 'block' : 'none';
+    //   if (div.style.display === 'none'){
+    //     div.style.display = 'block';
+    //   }
+    //   else {
+    //     div.style.display = 'none';
+    //   }
+    // }
+
   }, {
     key: "arrDays",
     value: function arrDays() {
@@ -56806,10 +56817,7 @@ function (_React$Component) {
       }
 
       return arr;
-    } // curDayLong(YYYYMM, DD) {
-    //   moment.weekdays(moment(`${YYYYMM}-${DD}`).day())
-    // }
-
+    }
   }, {
     key: "render",
     value: function render() {
@@ -56857,7 +56865,9 @@ function (_React$Component) {
         }).length > 0 ? tasks.filter(function (task) {
           return task.taskDateDue === moment("".concat(yearMonth, "-").concat(date)).format('YYYY-MM-DD').toString();
         }).length + " task(s) to do" : "Day is free")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "tasksToDoList"
+          id: "tasksToDoList",
+          className: "tasksToDoList",
+          display: "none"
         }, tasks.filter(function (task) {
           return task.taskDateDue === moment("".concat(yearMonth, "-").concat(date)).format('YYYY-MM-DD').toString();
         }).map(function (task, i) {
@@ -56865,12 +56875,7 @@ function (_React$Component) {
             key: i,
             task: task
           });
-        })), tasks.filter(function (task) {
-          return task.taskDateDue === moment("".concat(yearMonth, "-").concat(date)).format('YYYY-MM-DD').toString();
-        }).length > 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          type: "button",
-          className: "expand"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Show Task(s)")) : null));
+        }))));
       }), this.state.showPopUp ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_addTaskForm__WEBPACK_IMPORTED_MODULE_3__["default"], {
         curMonthLong: curMonthLong
       }) : null, this.state.showPopUpEdit ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_editTaskForm_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -56925,15 +56930,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
- // const fetchData = async () => {
-//   await axios.get(`http://localhost:3000/api/tasks/`)
-//     .then(res => {
-//       store.dispatch({
-//         type: SET_TASKS,
-//         setTasks: res.data
-//       })
-//     })
-// }
+
 
 var DaysContainer =
 /*#__PURE__*/
@@ -57356,16 +57353,16 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"); // const deleteData = (task) => {
+//   axios.delete(`http://localhost:3000/api/tasks/${task.id}`)
+//     .then(() => {
+//       store.dispatch({
+//         type: DELETE,
+//         delete: task.id
+//       })
+//     })
+// }
 
-var deleteData = function deleteData(task) {
-  axios__WEBPACK_IMPORTED_MODULE_3___default.a["delete"]("http://localhost:3000/api/tasks/".concat(task.id)).then(function () {
-    _store_js__WEBPACK_IMPORTED_MODULE_2__["store"].dispatch({
-      type: _store_js__WEBPACK_IMPORTED_MODULE_2__["DELETE"],
-      "delete": task.id
-    });
-  });
-};
 
 var Tasks =
 /*#__PURE__*/
@@ -57420,35 +57417,34 @@ function (_React$Component) {
         getId: task.id,
         toggle: !this.state.showPopUpEdit
       });
-    } // editTask() {
-    //   const { task } = this.props
-    //   console.log(task)
-    // }
-
+    }
   }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
-      var task = this.props.task; // console.log('task props', this.props.task)
-
+      var task = this.props.task;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "taskContainer"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "taskName"
       }, task.taskName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "taskDue"
-      }, "Task due @ ", moment("".concat(task.taskTimeDue), 'HH:mm').format('h:mm a').toString()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "Task due @ ", moment("".concat(task.taskTimeDue), 'HH:mm').format('h:mm a').toString()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "taskBtnContainer"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "taskBtns",
         type: "button",
         onClick: function onClick() {
           return _this2.togglePopUpEdit();
         }
       }, "Edit"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "taskBtns",
         type: "button",
         onClick: function onClick() {
           return _this2.clickDelete();
         }
-      }, "Done")));
+      }, "Done"))));
     }
   }]);
 
@@ -57523,6 +57519,7 @@ var ON_TIME_CHANGE = 'ON_TIME_CHANGE';
 var SET_TASKS = 'SET_TASKS';
 var DELETE = 'DELETE';
 var SET_FORM_EDIT = 'SET_FORM_EDIT';
+var TOGGLE_TASK_LIST = 'TOGGLE_TASK_LIST';
 var initialState = {
   tasks: [],
   prevCounter: 1,
@@ -57536,7 +57533,8 @@ var initialState = {
   formDate: '',
   taskTitle: '',
   taskTimeDue: '',
-  selectedTaskId: ''
+  selectedTaskId: '',
+  taskListDisplay: false
 }; // eslint-disable-next-line complexity
 
 var reducer = function reducer() {
@@ -57629,11 +57627,6 @@ var reducer = function reducer() {
           tasks: updatedList
         });
       }
-    // case ADD_TASK: {
-    //   return Object.assign({}, state, {
-    //     taskTimeDue: action.onChangeTime
-    //   })
-    // }
 
     default:
       return state;
