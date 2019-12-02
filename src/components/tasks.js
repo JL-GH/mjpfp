@@ -23,8 +23,8 @@ class Tasks extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { task } = this.props
-    if (task.taskName !== prevProps.task.taskName) {
+    // const { task } = this.props
+    if (this.props.task.taskName !== prevProps.task.taskName) {
       axios.get(`http://localhost:3000/api/tasks/`)
       .then(res => {
         store.dispatch({

@@ -48,8 +48,6 @@ class Days extends React.Component {
 
   arrDays() {
     const {curYear, daysInMonth} = this.state
-    // const month = this.monthValidator()
-    // const yearMonth = `${curYear}-${month}`
     const numDayInMonth = daysInMonth
     const arr = []
 
@@ -64,9 +62,7 @@ class Days extends React.Component {
     const yearMonth = `${curYear}-${curMonth}`
     const curMonthShort = moment.monthsShort(parseInt(curMonth) - 1)
     const arrDays = this.arrDays()
-
     const curMonthLong = moment.months(parseInt(curMonth) - 1)
-    console.log(moment(`${yearMonth}-1`).format('YYYY-MM-DD').toString())
 
     return (
       <div className='daysContainer'>
@@ -102,13 +98,19 @@ class Days extends React.Component {
                   </h5>
                 </div>
                 <div id='tasksToDoList' className='tasksToDoList' display='none'>
+                  <ul>
                   {
                     tasks.filter(task => {
                        return task.taskDateDue === moment(`${yearMonth}-${date}`).format('YYYY-MM-DD').toString()
                     }).map((task, i) => {
-                      return (<Tasks key={i} task={task}/>)
+                      return (
+                        <li key={i}>
+                          <Tasks task={task}/>
+                        </li>
+                      )
                     })
                   }
+                  </ul>
                 </div>
                 {/* {
                   tasks.filter(task => {

@@ -13,7 +13,7 @@
     "seed": "node ./server/db/seed.js",
     "postinstall": "npm run seed",
     "jest": "jest --runInBand --verbose",
-    "test:watch": "jest --runInBand --watch --verbose"
+    "jest:watch": "jest --runInBand --watch --verbose"
   },
   "keywords": [],
   "author": "",
@@ -37,6 +37,7 @@
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-loader": "^8.0.6",
+    "supertest": "^4.0.2",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"
   },

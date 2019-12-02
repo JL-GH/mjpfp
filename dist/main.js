@@ -50021,7 +50021,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -56528,11 +56528,9 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _store_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store.js */ "./src/store.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _store_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store.js */ "./src/store.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -56555,7 +56553,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
 var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 
 var PopUpForm =
@@ -56569,36 +56566,31 @@ function (_React$Component) {
     _classCallCheck(this, PopUpForm);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(PopUpForm).call(this));
-    _this.state = _store_js__WEBPACK_IMPORTED_MODULE_2__["store"].getState();
+    _this.state = _store_js__WEBPACK_IMPORTED_MODULE_1__["store"].getState();
     return _this;
-  } // componentDidUpdate(prevProps, prevState) {
-  //   if (prevState.taskTitle !== this.state.taskTitle) {
-  //    store.getState()
-  //   }
-  // }
-
+  }
 
   _createClass(PopUpForm, [{
     key: "closePopUpForm",
     value: function closePopUpForm() {
-      _store_js__WEBPACK_IMPORTED_MODULE_2__["store"].dispatch({
-        type: _store_js__WEBPACK_IMPORTED_MODULE_2__["TOGGLE_POPUP"],
+      _store_js__WEBPACK_IMPORTED_MODULE_1__["store"].dispatch({
+        type: _store_js__WEBPACK_IMPORTED_MODULE_1__["TOGGLE_POPUP"],
         toggle: !this.state.showPopUp
       });
     }
   }, {
     key: "onTitleChange",
     value: function onTitleChange(ev) {
-      _store_js__WEBPACK_IMPORTED_MODULE_2__["store"].dispatch({
-        type: _store_js__WEBPACK_IMPORTED_MODULE_2__["ON_TITLE_CHANGE"],
+      _store_js__WEBPACK_IMPORTED_MODULE_1__["store"].dispatch({
+        type: _store_js__WEBPACK_IMPORTED_MODULE_1__["ON_TITLE_CHANGE"],
         onChangeTitle: ev.target.value
       });
     }
   }, {
     key: "onTimeChange",
     value: function onTimeChange(ev) {
-      _store_js__WEBPACK_IMPORTED_MODULE_2__["store"].dispatch({
-        type: _store_js__WEBPACK_IMPORTED_MODULE_2__["ON_TIME_CHANGE"],
+      _store_js__WEBPACK_IMPORTED_MODULE_1__["store"].dispatch({
+        type: _store_js__WEBPACK_IMPORTED_MODULE_1__["ON_TIME_CHANGE"],
         onTimeChange: ev.target.value
       });
     }
@@ -56616,14 +56608,14 @@ function (_React$Component) {
         alert('look at console for error');
         throw new Error('must fill out both title and time');
       } else {
-        axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('http://localhost:3000/api/tasks/', {
+        axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('http://localhost:3000/api/tasks/', {
           taskDateDue: formDate,
           taskName: taskTitle,
           taskTimeDue: taskTimeDue
         }).then(function () {
-          axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("http://localhost:3000/api/tasks/").then(function (res) {
-            _store_js__WEBPACK_IMPORTED_MODULE_2__["store"].dispatch({
-              type: _store_js__WEBPACK_IMPORTED_MODULE_2__["SET_TASKS"],
+          axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("http://localhost:3000/api/tasks/").then(function (res) {
+            _store_js__WEBPACK_IMPORTED_MODULE_1__["store"].dispatch({
+              type: _store_js__WEBPACK_IMPORTED_MODULE_1__["SET_TASKS"],
               setTasks: res.data
             });
 
@@ -56631,43 +56623,20 @@ function (_React$Component) {
           });
         });
       }
-    } // submitForm() {
-    //   const { formDate, taskTitle, taskTimeDue } = this.state
-    //   // console.log(formDate)
-    //  document.getElementById(`${formDate}`).submit()
-    // }
-    // createTask() {
-    //   const { formDate, taskTitle, taskTimeDue } = this.state
-    //   store.dispatch({
-    //     type: ADD_TASK,
-    //     postTask: axios.post('http://localhost:3000/api/tasks', {formDate, taskTitle, taskTimeDue})
-    //       .then(res => {
-    //         console.log('taskTitle', taskTitle)
-    //         console.log('taskTime', taskTimeDue)
-    //         console.log('formDate', formDate)
-    //       })
-    //   })
-    // }
-
+    }
   }, {
     key: "render",
     value: function render() {
       var _this3 = this;
 
       var dateOrdinal = moment(this.state.formDate).format('Do');
-      var _this$state2 = this.state,
-          formDate = _this$state2.formDate,
-          taskTitle = _this$state2.taskTitle,
-          taskTimeDue = _this$state2.taskTimeDue;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "popUp"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "popUpInner"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "popUpTitle"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Create Task on ".concat(this.props.curMonthLong, " ").concat(dateOrdinal))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        id: formDate
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Create Task on ".concat(this.props.curMonthLong, " ").concat(dateOrdinal))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "Title",
         onChange: function onChange(ev) {
@@ -56688,12 +56657,12 @@ function (_React$Component) {
         onClick: function onClick() {
           return _this3.closePopUpForm();
         }
-      }, "cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         onClick: function onClick() {
           return _this3.submitTask();
         }
-      }, "create"))))));
+      }, "Create"))))));
     }
   }]);
 
@@ -56806,9 +56775,7 @@ function (_React$Component) {
     value: function arrDays() {
       var _this$state = this.state,
           curYear = _this$state.curYear,
-          daysInMonth = _this$state.daysInMonth; // const month = this.monthValidator()
-      // const yearMonth = `${curYear}-${month}`
-
+          daysInMonth = _this$state.daysInMonth;
       var numDayInMonth = daysInMonth;
       var arr = [];
 
@@ -56831,7 +56798,6 @@ function (_React$Component) {
       var curMonthShort = moment.monthsShort(parseInt(curMonth) - 1);
       var arrDays = this.arrDays();
       var curMonthLong = moment.months(parseInt(curMonth) - 1);
-      console.log(moment("".concat(yearMonth, "-1")).format('YYYY-MM-DD').toString());
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "daysContainer"
       }, arrDays.map(function (date, idx) {
@@ -56868,14 +56834,15 @@ function (_React$Component) {
           id: "tasksToDoList",
           className: "tasksToDoList",
           display: "none"
-        }, tasks.filter(function (task) {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, tasks.filter(function (task) {
           return task.taskDateDue === moment("".concat(yearMonth, "-").concat(date)).format('YYYY-MM-DD').toString();
         }).map(function (task, i) {
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tasks_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
-            key: i,
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+            key: i
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tasks_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
             task: task
-          });
-        }))));
+          }));
+        })))));
       }), this.state.showPopUp ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_addTaskForm__WEBPACK_IMPORTED_MODULE_3__["default"], {
         curMonthLong: curMonthLong
       }) : null, this.state.showPopUpEdit ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_editTaskForm_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -56980,11 +56947,9 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _store_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store.js */ "./src/store.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _store_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store.js */ "./src/store.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -57007,7 +56972,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
 var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 
 var EditPopUpForm =
@@ -57021,31 +56985,31 @@ function (_React$Component) {
     _classCallCheck(this, EditPopUpForm);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(EditPopUpForm).call(this));
-    _this.state = _store_js__WEBPACK_IMPORTED_MODULE_2__["store"].getState();
+    _this.state = _store_js__WEBPACK_IMPORTED_MODULE_1__["store"].getState();
     return _this;
   }
 
   _createClass(EditPopUpForm, [{
     key: "closePopUpForm",
     value: function closePopUpForm() {
-      _store_js__WEBPACK_IMPORTED_MODULE_2__["store"].dispatch({
-        type: _store_js__WEBPACK_IMPORTED_MODULE_2__["TOGGLE_POPUP_EDIT"],
+      _store_js__WEBPACK_IMPORTED_MODULE_1__["store"].dispatch({
+        type: _store_js__WEBPACK_IMPORTED_MODULE_1__["TOGGLE_POPUP_EDIT"],
         toggle: !this.state.showPopUpEdit
       });
     }
   }, {
     key: "onTitleChange",
     value: function onTitleChange(ev) {
-      _store_js__WEBPACK_IMPORTED_MODULE_2__["store"].dispatch({
-        type: _store_js__WEBPACK_IMPORTED_MODULE_2__["ON_TITLE_CHANGE"],
+      _store_js__WEBPACK_IMPORTED_MODULE_1__["store"].dispatch({
+        type: _store_js__WEBPACK_IMPORTED_MODULE_1__["ON_TITLE_CHANGE"],
         onChangeTitle: ev.target.value
       });
     }
   }, {
     key: "onTimeChange",
     value: function onTimeChange(ev) {
-      _store_js__WEBPACK_IMPORTED_MODULE_2__["store"].dispatch({
-        type: _store_js__WEBPACK_IMPORTED_MODULE_2__["ON_TIME_CHANGE"],
+      _store_js__WEBPACK_IMPORTED_MODULE_1__["store"].dispatch({
+        type: _store_js__WEBPACK_IMPORTED_MODULE_1__["ON_TIME_CHANGE"],
         onTimeChange: ev.target.value
       });
     }
@@ -57057,52 +57021,40 @@ function (_React$Component) {
           taskTitle = _this$state.taskTitle,
           taskTimeDue = _this$state.taskTimeDue,
           selectedTaskId = _this$state.selectedTaskId;
-      console.log(selectedTaskId);
-      console.log('formDate', formDate);
-      console.log('taskTitle', taskTitle);
-      console.log('taskTimeDue', taskTimeDue);
 
       if (taskTitle === '' || taskTimeDue === '') {
         alert('look at console for error');
         throw new Error('must fill out both title and time');
       } else {
-        axios__WEBPACK_IMPORTED_MODULE_3___default.a.put("http://localhost:3000/api/tasks/".concat(selectedTaskId), {
+        axios__WEBPACK_IMPORTED_MODULE_2___default.a.put("http://localhost:3000/api/tasks/".concat(selectedTaskId), {
           taskDateDue: formDate,
           taskName: taskTitle,
           taskTimeDue: taskTimeDue
         }).then(function () {
           console.log('GETTINGGGG!!!!!');
-          axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("http://localhost:3000/api/tasks/").then(function (res) {
-            _store_js__WEBPACK_IMPORTED_MODULE_2__["store"].dispatch({
-              type: _store_js__WEBPACK_IMPORTED_MODULE_2__["SET_TASKS"],
+          axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("http://localhost:3000/api/tasks/").then(function (res) {
+            _store_js__WEBPACK_IMPORTED_MODULE_1__["store"].dispatch({
+              type: _store_js__WEBPACK_IMPORTED_MODULE_1__["SET_TASKS"],
               setTasks: res.data
             });
           });
         });
         this.closePopUpForm();
       }
-    } //DO THE EDIT SDDSOIFJODSJFLSD
-
+    }
   }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
       var dateOrdinal = moment(this.state.formDate).format('Do');
-      var _this$state2 = this.state,
-          formDate = _this$state2.formDate,
-          taskTitle = _this$state2.taskTitle,
-          taskTimeDue = _this$state2.taskTimeDue;
-      console.log('testafasdfasdfas', taskTitle);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "popUp"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "popUpInner"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "popUpTitle"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Update Task on ".concat(this.props.curMonthLong, " ").concat(dateOrdinal))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        id: formDate
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Update Task on ".concat(this.props.curMonthLong, " ").concat(dateOrdinal))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "Title",
         onChange: function onChange(ev) {
@@ -57123,12 +57075,12 @@ function (_React$Component) {
         onClick: function onClick() {
           return _this2.closePopUpForm();
         }
-      }, "cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         onClick: function onClick() {
           return _this2.updateTask();
         }
-      }, "update"))))));
+      }, "Update"))))));
     }
   }]);
 
@@ -57382,9 +57334,8 @@ function (_React$Component) {
   _createClass(Tasks, [{
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
-      var task = this.props.task;
-
-      if (task.taskName !== prevProps.task.taskName) {
+      // const { task } = this.props
+      if (this.props.task.taskName !== prevProps.task.taskName) {
         axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("http://localhost:3000/api/tasks/").then(function (res) {
           _store_js__WEBPACK_IMPORTED_MODULE_2__["store"].dispatch({
             type: _store_js__WEBPACK_IMPORTED_MODULE_2__["SET_TASKS"],
